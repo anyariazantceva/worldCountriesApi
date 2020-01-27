@@ -1,4 +1,6 @@
 const container = document.querySelector('.countries');
+const countries = getData();
+console.log(countries);
 const searchBtn = document.querySelector('.btn-search');
 const startBtn = document.querySelector('.btn-start');
 const nameBtn = document.querySelector('.btn-name');
