@@ -4,31 +4,15 @@ const startBtn = document.querySelector('.btn-start');
 const nameBtn = document.querySelector('.btn-name');
 const searchInput = document.querySelector('.search__control');
 
-const lowerCaseCountries = countries.map((item) => {
-    return item.toLowerCase();
-});
-
 startBtn.addEventListener('click', () => {
     searchInput.addEventListener('input', () => {
-        let value = document.querySelector('.search__control').value.toLowerCase();
-        console.log( typeof value);
-        let sortedArray = sortStartLetter(lowerCaseCountries, value);
-        let container = document.querySelector('.countries');
-        container.innerHTML = '';
-        showCountries(sortedArray);
-
+        renderSortedArray('start');
     });
 });
 
 nameBtn.addEventListener('click', () => {
     searchInput.addEventListener('input', () => {
-        let value = document.querySelector('.search__control').value.toLowerCase();
-        console.log( typeof value);
-        let sortedArray = sortAnySymbols(lowerCaseCountries, value);
-        let container = document.querySelector('.countries');
-        container.innerHTML = '';
-        showCountries(sortedArray);
-
+        renderSortedArray('any');
     });
 });
 
@@ -47,25 +31,37 @@ const sortAnySymbols = (arr, match) => {
     let sortedArr = arr.filter((item) => {
         return item.includes(match);
     });
+    let container = document.querySelector('.countries');
+    container.innerHTML = '';
 
     return sortedArr
 };
 
 const sortStartLetter = (arr, match) => {
   let sortedArr = arr.filter((item) => {
-      return item.startsWith(match)
+      return item.toUpperCase().startsWith(match)
   });
-    return sortedArr
+  let container = document.querySelector('.countries');
+  container.innerHTML = '';
+  return sortedArr
 };
 
 showCountries(countries);
 
-searchInput.addEventListener('input', () => {
-    let value = document.querySelector('.search__control').value.toLowerCase();
-    console.log(typeof value);
-    let sortedArray = sortAnySymbols(countries, value);
-    let container = document.querySelector('.countries');
-    container.innerHTML = '';
-    showCountries(sortedArray);
-
-});
+const renderSortedArray = (type) => {
+    let value = document.querySelector('.search__control').value;
+    let upperCasedValue = value.toUpperCase();
+    if(type === 'start') {
+        console.log(value);
+        let sortedArray = sortStartLetter(countries, upperCasedValue);
+        showCountries(sortedArray);
+    } else if(type === 'any') {
+        console.log(value);
+        let sortedArray = sortAnySymbols(countries, value);
+        showCountries(sortedArray);
+    } else {
+        console.log(value);
+        let sortedArray = sortAnySymbols(countries, value);
+        showCountries(sortedArray);
+    }
+};
