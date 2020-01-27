@@ -1,10 +1,15 @@
 const container = document.querySelector('.countries');
-const countries = getData();
-console.log(countries);
 const searchBtn = document.querySelector('.btn-search');
 const startBtn = document.querySelector('.btn-start');
 const nameBtn = document.querySelector('.btn-name');
 const searchInput = document.querySelector('.search__control');
+
+const list = 'https://restcountries.eu/rest/v2/all';
+const response = fetch(list)
+    .then((data => data.json()))
+    .then((countries => showCountries(countries)))
+    .catch(error => console.log(error))
+
 
 startBtn.addEventListener('click', () => {
     searchInput.addEventListener('input', () => {
@@ -20,9 +25,13 @@ nameBtn.addEventListener('click', () => {
 
 function showCountries (array) {
     array.forEach((item) => {
+        console.log(item);
         let block = document.createElement('div');
         block.classList.add('countries__item');
-        block.textContent = item;
+
+        block.textContent = item.name;
+
+        //block.append(flag);
         container.append(block);
 
     })
@@ -48,7 +57,7 @@ const sortStartLetter = (arr, match) => {
   return sortedArr
 };
 
-showCountries(countries);
+//showCountries(countries);
 
 const renderSortedArray = (type) => {
     let value = document.querySelector('.search__control').value;
