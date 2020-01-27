@@ -5,10 +5,29 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Lobster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <title>World Countries Api</title>
 </head>
 <body>
-<script src="js/script.js"></script>
+    <div class="page__container">
+        <div class="page__header">
+            <div class="page__title">World Countries Api</div>
+        </div>
+        <div class="page__search search">
+            <div class="search__group">
+                <label class="search__label"></label>
+                <input type="text" class="search__control" placeholder="Enter the country's name">
+                <button class="btn search__btn btn-search">Search</button>
+            </div>
+            <div class="search__action">
+                <button class="btn search__btn btn-start">Start with</button>
+                <button class="btn search__btn btn-name">Search by name</button>
+            </div>
+        </div>
+        <div class="page__countries countries"></div>
+    </div>
+    <script src="js/countries.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
