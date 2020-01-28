@@ -1,15 +1,18 @@
-const url = 'https://restcountries.eu/rest/v2/all';
-async function getData () {
-    const response = await fetch(url);
-    if (response.ok) {
-        let data = await response.json();
-        let newData = data.map((item) => {
-            return item.name
-        });
-        return newData
-    } else {
-       return "Ошибка HTTP: " + response.status;
-    }
-}
+let urls = [
+    'https://api.github.com/users/iliakan',
+    'https://api.github.com/users/remy',
+    'https://api.github.com/users/jeresig'
+];
+
+// Преобразуем каждый URL в промис, возвращённый fetch
+let requests = urls.map(url => fetch(url));
+
+// Promise.all будет ожидать выполнения всех промисов
+Promise.all(requests)
+    .then(responses => responses.forEach(
+        response => alert(`${response.url}: ${response.status}`)
+    ));
+// Promise.all будет ожидать выполнения всех промисов
+
 
 
