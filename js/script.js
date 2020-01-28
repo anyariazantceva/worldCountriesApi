@@ -1,5 +1,4 @@
 const container = document.querySelector('.countries');
-const searchBtn = document.querySelector('.btn-search');
 const startBtn = document.querySelector('.btn-start');
 const nameBtn = document.querySelector('.btn-name');
 const reverseBtn = document.querySelector('.btn-reverse');
@@ -12,6 +11,7 @@ function loadData () {
         .then(response => response.json())
         .then(countries => {
             showCountries(countries);
+            showTotal(countries);
             startBtn.addEventListener('click', () => {
                 searchInput.addEventListener('input', () => {
                     renderSortedArray('start', countries);
@@ -75,18 +75,22 @@ const renderSortedArray = (type, countries) => {
     if(type === 'start') {
         let sortedArray = sortStartLetter(countries, upperCasedValue);
         showCountries(sortedArray);
+        showTotal(sortedArray);
         reverseBtn.addEventListener('click', () => {
             reverseArray(sortedArray)
         })
+
     } else if(type === 'any') {
         let sortedArray = sortAnySymbols(countries, value);
         showCountries(sortedArray);
+        showTotal(sortedArray);
         reverseBtn.addEventListener('click', () => {
             reverseArray(sortedArray)
         })
     } else {
         let sortedArray = sortAnySymbols(countries, value);
         showCountries(sortedArray);
+        showTotal(sortedArray);
         reverseBtn.addEventListener('click', () => {
             reverseArray(sortedArray)
         })
@@ -116,6 +120,12 @@ const sortStartLetter = (arr, match) => {
   });
   clearContainer();
   return sortedArr
+};
+
+// display total amount
+const showTotal = (arr) => {
+    let total = document.querySelector('.search__total');
+    total.textContent = `Total number of countries: ${arr.length}`
 };
 
 
