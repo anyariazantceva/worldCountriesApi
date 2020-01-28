@@ -6,9 +6,9 @@ const reverseBtn = document.querySelector('.btn-reverse');
 const searchInput = document.querySelector('.search__control');
 const list = 'https://restcountries.eu/rest/v2/all';
 function loadData () {
-    showSpinner()
+    showSpinner();
     fetch(list)
-        .then(response => response.json() )
+        .then(response => response.json())
         .then(countries => {
             showCountries(countries);
             startBtn.addEventListener('click', () => {
@@ -22,16 +22,19 @@ function loadData () {
                 });
             });
             reverseBtn.addEventListener('click', () => {
-                let reversedCountries = countries.reverse();
-                let container = document.querySelector('.countries');
-                container.innerHTML = '';
-                showCountries(reversedCountries);
+                reverseArray(countries)
             })
         })
         .catch(error => console.log(error))
 }
 
 loadData();
+
+const reverseArray = (arr) => {
+    let reversedCountries = arr.reverse();
+    clearContainer();
+    showCountries(reversedCountries);
+};
 
 function showSpinner () {
     const spinner = document.querySelector('.page__spinner');
@@ -73,12 +76,21 @@ const renderSortedArray = (type, countries) => {
     if(type === 'start') {
         let sortedArray = sortStartLetter(countries, upperCasedValue);
         showCountries(sortedArray);
+        reverseBtn.addEventListener('click', () => {
+            reverseArray(sortedArray)
+        })
     } else if(type === 'any') {
         let sortedArray = sortAnySymbols(countries, value);
         showCountries(sortedArray);
+        reverseBtn.addEventListener('click', () => {
+            reverseArray(sortedArray)
+        })
     } else {
         let sortedArray = sortAnySymbols(countries, value);
         showCountries(sortedArray);
+        reverseBtn.addEventListener('click', () => {
+            reverseArray(sortedArray)
+        })
     }
 };
 
@@ -90,21 +102,22 @@ const sortAnySymbols = (arr, match) => {
     let normalArr = loweredArr.filter((item) => {
         return item.name[0].toUpperCase();
     });
-    let container = document.querySelector('.countries');
-    container.innerHTML = '';
+    clearContainer();
 
     return normalArr
 };
 
+const clearContainer = () => {
+    let container = document.querySelector('.countries');
+    container.innerHTML = '';
+};
 const sortStartLetter = (arr, match) => {
   let sortedArr = arr.filter((item) => {
       return item.name.toUpperCase().startsWith(match)
   });
-  let container = document.querySelector('.countries');
-  container.innerHTML = '';
+  clearContainer();
   return sortedArr
 };
-
 
 
 
