@@ -5,6 +5,7 @@ const nameBtn = document.querySelector('.btn-name');
 const reverseBtn = document.querySelector('.btn-reverse');
 const searchInput = document.querySelector('.search__control');
 const list = 'https://restcountries.eu/rest/v2/all';
+
 function loadData () {
     showSpinner();
     fetch(list)
@@ -63,8 +64,6 @@ function showCountries (array) {
         capitalBlock.textContent = item.capital !=='' ? `Capital: ${item.capital}`: 'There is no capital'
         imageBlock.append(imagePic);
         block.append(imageBlock, textBlock, capitalBlock);
-
-        //block.append(flag);
         container.append(block);
 
     })
