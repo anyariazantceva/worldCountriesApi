@@ -1,0 +1,33 @@
+@import 'variables';
+.search {
+  margin-top: 3rem;
+
+  &__group {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__label {
+    position: absolute;
+    display: none;
+    z-index: -1;
+  }
+  &__control {
+    display: block;
+    outline: none;
+    border: none;
+    background-color: #f7f7f7;
+    font-family: inherit;
+    font-size: 1.4rem;
+    width: 100%;
+    padding: 10px;
+  }
+  &__btn {
+    margin-right: 1rem;
+  }
+  &__total {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-top: 1rem;
+  }
+}

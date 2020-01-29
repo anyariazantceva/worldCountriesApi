@@ -6,7 +6,6 @@ const searchInput = document.querySelector('.search__control');
 const list = 'https://restcountries.eu/rest/v2/all';
 
 function loadData () {
-    showSpinner();
     fetch(list)
         .then(response => response.json())
         .then(countries => {
@@ -36,16 +35,6 @@ const reverseArray = (arr) => {
     clearContainer();
     showCountries(reversedCountries);
 };
-
-function showSpinner () {
-    const spinner = document.querySelector('.page__spinner');
-    if(spinner.style.display === 'none') {
-        spinner.style.display = 'block'
-    } else {
-        spinner.style.display = 'none';
-    }
-
-}
 
 function showCountries (array) {
     array.forEach((item) => {
@@ -114,6 +103,7 @@ const clearContainer = () => {
     let container = document.querySelector('.countries');
     container.innerHTML = '';
 };
+
 const sortStartLetter = (arr, match) => {
   let sortedArr = arr.filter((item) => {
       return item.name.toUpperCase().startsWith(match)
@@ -122,7 +112,6 @@ const sortStartLetter = (arr, match) => {
   return sortedArr
 };
 
-// display total amount
 const showTotal = (arr) => {
     let total = document.querySelector('.search__total');
     total.textContent = `Total number of countries: ${arr.length}`
