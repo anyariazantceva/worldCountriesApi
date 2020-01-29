@@ -1,0 +1,116 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0; }
+
+html {
+  font-size: 62.5%; }
+
+body {
+  font-family: "Lato", sans-serif; }
+
+.btn {
+  display: inline-block;
+  outline: none;
+  border: none;
+  font-family: inherit;
+  background-color: #bf2d2d;
+  padding: 1rem 3rem;
+  color: #ffffff;
+  transition: background-color 1s, transform 1s; }
+  .btn:hover, .btn:focus, .btn:active {
+    background-color: #e24949; }
+  .btn:active {
+    transform: translateY(4px); }
+  .btn-search {
+    width: 23%; }
+
+.page__container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center; }
+
+.page__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-family: "Lobster", cursive;
+  width: 100%;
+  max-height: 45rem;
+  height: 45rem;
+  font-size: 5rem;
+  padding: 4rem;
+  background: 50% 40%/cover no-repeat url(../bg5.jpg);
+  color: #ffffff; }
+  .page__header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); }
+
+.page__title {
+  z-index: 20; }
+
+.page__spinner {
+  display: none; }
+
+.countries {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 2rem;
+  margin-top: 2rem; }
+  .countries__item {
+    background-color: #f8f6f9;
+    width: 20rem;
+    height: 20rem;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Lato", sans-serif;
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-align: center;
+    transition: transform 1s; }
+    .countries__item:hover {
+      transform: scale(1.1); }
+  .countries__image {
+    width: 18rem;
+    height: 9rem;
+    overflow: hidden;
+    margin-bottom: 1rem; }
+  .countries__pic {
+    width: 100%;
+    height: 100%; }
+
+.search {
+  margin-top: 3rem; }
+  .search__group {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between; }
+  .search__label {
+    position: absolute;
+    display: none;
+    z-index: -1; }
+  .search__control {
+    display: block;
+    outline: none;
+    border: none;
+    background-color: #f7f7f7;
+    font-family: inherit;
+    font-size: 1.4rem;
+    width: 100%;
+    padding: 10px; }
+  .search__btn {
+    margin-right: 1rem; }
+  .search__total {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-top: 1rem; }
