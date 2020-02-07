@@ -23,14 +23,16 @@
                 <button class="btn search__btn btn-countryname">Name</button>
                 <button class="btn search__btn btn-capital">Capital</button>
                 <button class="btn search__btn btn-population">Population</button>
-<!--                <button class="btn search__btn btn-start">Start with</button>-->
-<!--                <button class="btn search__btn btn-name">Search all the matches</button>-->
                 <button class="btn search__btn btn-reverse">Reverse the order</button>
+                <button class="btn search__btn btn-chart">See the chart</button>
             </div>
             <div class="search__total">Total number of countries: </div>
         </div>
         <div class="page__countries countries"></div>
+        <canvas id="myChart" width="400" height="200"></canvas>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
